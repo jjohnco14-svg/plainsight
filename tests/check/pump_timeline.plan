@@ -1,0 +1,2 @@
+function: pump_step
+timeline: p.state = IDLE | level = [15, 15, 50, 95], flowing = true -> p.state = [PUMPING, PUMPING, PUMPING, IDLE]

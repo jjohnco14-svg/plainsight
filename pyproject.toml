@@ -19,4 +19,4 @@ plainsight = "plainsight.cli:main"
 packages = ["plainsight", "plainsight._dictum"]
 
 [tool.setuptools.package-data]
-plainsight = ["docs/*.md"]
+plainsight = ["docs/*.md", "docs/*.h"]
