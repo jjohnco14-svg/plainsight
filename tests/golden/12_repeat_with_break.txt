@@ -1,0 +1,12 @@
+Function first_negative (line 1)
+  Takes: values (pointer to read-only whole number), n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates found (whole number), starting at negative 1.
+    2. Repeats up to n times, with i counting from 0:
+         1. If (item i of values) is less than 0:
+              1. Sets found to i.
+              2. Stops the loop.
+    3. Stops and gives back found.
+
+Covered: 6 of 6 statements.

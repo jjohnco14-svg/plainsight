@@ -1,0 +1,28 @@
+%% crossing_tick: how light changes
+%% (no arrow applies = light stays the same)
+stateDiagram-v2
+    GREEN
+    YELLOW
+    RED
+    GREEN --> YELLOW : if timer is at least 30<br/>(GREEN_TIME) or (button_pressed<br/>and timer is at least 10<br/>(MIN_GREEN)): timer becomes 0
+    YELLOW --> RED : if timer is at least 5<br/>(YELLOW_TIME): timer becomes 0
+    RED --> GREEN : if timer is at least 20<br/>(RED_TIME): timer becomes 0
+    note right of GREEN : every time first: timer goes up<br/>by 1
+    note right of YELLOW : every time first: timer goes up<br/>by 1
+    note right of RED : every time first: timer goes up<br/>by 1
+
+%% count_rush_hours
+flowchart TD
+    n1(["start count_rush_hours<br/>takes: cars (list of whole<br/>numbers, only read), hours<br/>(whole number)"])
+    n2["rush starts at 0"]
+    n3{{"for each h from 0 to hours minus<br/>1"}}
+    n4{"item h of cars is over 100?"}
+    n5["rush goes up by 1"]
+    n6(["gives back rush"])
+    n1 --> n2
+    n2 --> n3
+    n3 -->|"next"| n4
+    n4 -->|"yes"| n5
+    n5 --> n3
+    n4 -->|"no"| n3
+    n3 -->|"finished"| n6

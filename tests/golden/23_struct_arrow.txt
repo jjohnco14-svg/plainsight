@@ -1,0 +1,9 @@
+Record Pos holds x (whole number) and y (whole number).
+
+Function move_right (line 6)
+  Takes: p (pointer to Pos record)
+  Gives back: nothing
+  Steps:
+    1. Adds 1 to the x of what p points to.
+
+Covered: 1 of 1 statements.

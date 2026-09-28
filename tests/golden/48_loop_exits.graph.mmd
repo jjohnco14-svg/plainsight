@@ -1,0 +1,66 @@
+%% find
+flowchart TD
+    n1(["start find<br/>takes: a (list of whole numbers,<br/>only read), n (whole number), x<br/>(whole number)"])
+    n2{{"for each i from 0 to n minus 1"}}
+    n3{"item i of a is x?"}
+    n4(["gives back i"])
+    n5(["gives back negative 1"])
+    n1 --> n2
+    n2 -->|"next"| n3
+    n3 -->|"yes"| n4
+    n3 -->|"no"| n2
+    n2 -->|"finished"| n5
+
+%% check_all
+flowchart TD
+    n1(["start check_all<br/>takes: a (list of whole numbers,<br/>only read), n (whole number)"])
+    n2{{"for each i from 0 to n minus 1"}}
+    n3{"item i of a is below 0?"}
+    n4["ends the whole program with<br/>status 1"]
+    n5(["end"])
+    n1 --> n2
+    n2 -->|"next"| n3
+    n3 -->|"yes"| n4
+    n4 --> n2
+    n3 -->|"no"| n2
+    n2 -->|"finished"| n5
+
+%% first_code
+flowchart TD
+    n1(["start first_code<br/>takes: a (list of whole numbers,<br/>only read), n (whole number)"])
+    n2{{"for each i from 0 to n minus 1"}}
+    n3{"which value is item i of a?"}
+    n4(["gives back i"])
+    n5(["gives back negative 1"])
+    n1 --> n2
+    n2 -->|"next"| n3
+    n3 -->|"7"| n4
+    n3 -->|"anything else"| n2
+    n2 -->|"finished"| n5
+
+%% count_rows
+flowchart TD
+    n1(["start count_rows<br/>takes: rows (whole number), cols<br/>(whole number)"])
+    n2["seen starts at 0"]
+    n3{{"for each r from 0 to rows minus<br/>1"}}
+    n4{{"for each c from 0 to cols minus<br/>1"}}
+    n5{"c is 2?"}
+    n6["seen goes up by 1"]
+    n7(["gives back seen"])
+    n1 --> n2
+    n2 --> n3
+    n3 -->|"next"| n4
+    n4 -->|"next"| n5
+    n5 -->|"no"| n6
+    n6 --> n4
+    n4 -->|"finished"| n3
+    n5 -->|"yes"| n3
+    n3 -->|"finished"| n7
+
+%% pick
+flowchart TD
+    n1(["start pick<br/>takes: out (pointer to whole<br/>number), big (whole number)"])
+    n2["the location out points to<br/>becomes 100 if big is not zero,<br/>otherwise 1"]
+    n3(["end"])
+    n1 --> n2
+    n2 --> n3

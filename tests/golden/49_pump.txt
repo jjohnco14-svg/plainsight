@@ -1,0 +1,45 @@
+Choice PumpState has the options IDLE (0), PUMPING (1), and FAULT (2).
+
+Record Pump holds state (PumpState choice), faults (whole number), and run_minutes (whole number).
+
+Function pump_init (line 15)
+  Takes: p (pointer to Pump record)
+  Gives back: nothing
+  Steps:
+    1. Puts IDLE into the state of what p points to.
+    2. Puts 0 into the faults of what p points to.
+    3. Puts 0 into the run_minutes of what p points to.
+
+Function pump_step (line 22)
+  Takes: p (pointer to Pump record), level (whole number), flowing (truth value)
+  Gives back: nothing
+  Steps:
+    1. Checks the value of the state of what p points to:
+       If it is IDLE:
+         1. If level is less than LOW_LEVEL (20):
+              1. Puts PUMPING into the state of what p points to.
+              2. Puts 0 into the run_minutes of what p points to.
+       If it is PUMPING:
+         1. Adds 1 to the run_minutes of what p points to.
+         2. If (not flowing) and (the run_minutes of what p points to) is greater than 2:
+              1. Adds 1 to the faults of what p points to.
+              2. Puts FAULT into the state of what p points to if (the faults of what p points to) is at least MAX_FAULTS (3); otherwise puts IDLE there.
+            Otherwise, if level is at least HIGH_LEVEL (90):
+              1. Puts IDLE into the state of what p points to.
+       If it is FAULT:
+         (does nothing)
+       If it is none of these, nothing here happens.
+
+Function minutes_to_fill (line 44)
+  Takes: levels (pointer to read-only whole number), n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates start (whole number), starting at negative 1.
+    2. Repeats up to n times, with i counting from 0:
+         1. If start is less than 0 and (item i of levels) is less than LOW_LEVEL (20):
+              1. Sets start to i.
+         2. If start is at least 0 and (item i of levels) is at least HIGH_LEVEL (90):
+              1. Stops and gives back i minus start.
+    3. Stops and gives back negative 1.
+
+Covered: 24 of 24 statements.

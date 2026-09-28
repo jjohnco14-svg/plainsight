@@ -1,0 +1,38 @@
+Modes of DoorMode: OPEN, CLOSED, or LOCKED.
+
+Record Door holds mode, previous, and count.
+
+Function close_door
+  Takes: d (a Door record, changed in place)
+  What it does:
+    (exact step) Checks the value of mode:
+       If it is OPEN:
+         1. Puts CLOSED into mode.
+         2. Puts mode into previous.
+       If it is CLOSED or LOCKED:
+         (does nothing)
+       If it is none of these, nothing here happens.
+  Changes: only the record it's given (d).
+
+Function lock_door
+  Takes: d (a Door record, changed in place)
+  What it does:
+    (exact step) Checks the value of mode:
+       If it is OPEN:
+         1. Adds 1 to count.
+         2. Then continues straight into the next case's steps (there is no break here).
+       If it is CLOSED:
+         1. Puts LOCKED into mode.
+       If it is LOCKED:
+         (does nothing)
+       If it is none of these, nothing here happens.
+  Changes: only the record it's given (d).
+
+Function bump
+  Takes: d (a Door record, changed in place)
+  Gives back: a whole number
+  What it does:
+    (exact step) Creates count (whole number), starting at the count of what d points to.
+    - the count of what d points to becomes count plus 1
+    Then gives back count.
+  Changes: only the record it's given (d).

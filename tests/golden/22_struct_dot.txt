@@ -1,0 +1,12 @@
+Record Point holds x (whole number) and y (whole number).
+
+Function make_x (line 6)
+  Takes: v (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates p (Point record), not yet given a value.
+    2. Puts v into p's x.
+    3. Puts 0 into p's y.
+    4. Stops and gives back p's x plus p's y.
+
+Covered: 4 of 4 statements.

@@ -1,0 +1,68 @@
+Choice PumpState has the options IDLE (0), PUMPING (1), and FAULT (2).
+
+Record Pump holds state (PumpState choice), faults (whole number), and run_minutes (whole number).
+
+Function pump_init (line 15)
+  Takes: p (pointer to Pump record)
+  Gives back: nothing
+  Steps:
+    1. Puts IDLE into the state of what p points to.
+    2. Puts 0 into the faults of what p points to.
+    3. Puts 0 into the run_minutes of what p points to.
+
+Function pump_step (line 22)
+  Takes: p (pointer to Pump record), level (whole number), flowing (truth value)
+  Gives back: nothing
+  Steps:
+    1. Checks the value of the state of what p points to:
+       If it is IDLE:
+         1. If level is less than LOW_LEVEL (20):
+              1. Puts PUMPING into the state of what p points to.
+              2. Puts 0 into the run_minutes of what p points to.
+       If it is PUMPING:
+         1. Adds 1 to the run_minutes of what p points to.
+         2. If (not flowing) and (the run_minutes of what p points to) is greater than 2:
+              1. Adds 1 to the faults of what p points to.
+              2. Puts FAULT into the state of what p points to if (the faults of what p points to) is at least MAX_FAULTS (3); otherwise puts IDLE there.
+            Otherwise, if level is at least HIGH_LEVEL (90):
+              1. Puts IDLE into the state of what p points to.
+       If it is FAULT:
+         (does nothing)
+       If it is none of these, nothing here happens.
+
+Function minutes_to_fill (line 44)
+  Takes: levels (pointer to read-only whole number), n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates start (whole number), starting at negative 1.
+    2. Repeats up to n times, with i counting from 0:
+         1. If start is less than 0 and (item i of levels) is less than LOW_LEVEL (20):
+              1. Sets start to i.
+         2. If start is at least 0 and (item i of levels) is at least HIGH_LEVEL (90):
+              1. Stops and gives back i minus start.
+    3. Stops and gives back negative 1.
+
+Shared variable total_faults (whole number), starting at 0.
+
+Function report (line 61)
+  Takes: p (pointer to read-only Pump record), minute (whole number)
+  Gives back: nothing
+  Steps:
+    1. Prints "minute [minute]: state [the state of what p points to], faults [the faults of what p points to]" and starts a new line.
+    2. Sets total_faults to the faults of what p points to.
+
+Function main (line 66)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Creates levels (list of 8 whole numbers), holding the values 50, 18, 25, 40, 70, 92, 95, and 60.
+    2. Creates flow (list of 8 truth values), holding the values true (1), true (1), true (1), true (1), true (1), true (1), true (1), and true (1).
+    3. Creates pump (Pump record), not yet given a value.
+    4. Calls pump_init with the location of pump.
+    5. Repeats 8 times, with m counting from 0:
+         1. Calls pump_step with the location of pump, item m of levels, and item m of flow.
+         2. Calls report with the location of pump and m.
+    6. Prints "fill time: [the result of calling minutes_to_fill with levels and 8] minutes" and starts a new line.
+    7. Stops and gives back 0.
+
+Covered: 36 of 36 statements.

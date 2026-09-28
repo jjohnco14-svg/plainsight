@@ -1,0 +1,9 @@
+Function check (line 1)
+  Takes: a (whole number), b (whole number), c (whole number)
+  Gives back: a whole number
+  Steps:
+    1. If (not (a is not zero and b is not zero)) or c is not zero:
+         1. Stops and gives back 1.
+    2. Stops and gives back 0.
+
+Covered: 3 of 3 statements.

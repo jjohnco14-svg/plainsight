@@ -1,0 +1,13 @@
+Function square (line 1)
+  Takes: x (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back x times x.
+
+Function sum_squares (line 4)
+  Takes: a (whole number), b (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back (the result of calling square with a) plus (the result of calling square with b).
+
+Covered: 2 of 2 statements.

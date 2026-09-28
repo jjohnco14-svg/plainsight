@@ -1,0 +1,48 @@
+Function find (line 3)
+  Takes: a (pointer to read-only whole number), n (whole number), x (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Repeats up to n times, with i counting from 0:
+         1. If (item i of a) is equal to x:
+              1. Stops and gives back i.
+    2. Stops and gives back negative 1.
+
+Function check_all (line 12)
+  Takes: a (pointer to read-only whole number), n (whole number)
+  Gives back: nothing
+  Steps:
+    1. Repeats up to n times, with i counting from 0:
+         1. If (item i of a) is less than 0:
+              1. Ends the whole program with status 1.
+
+Function first_code (line 20)
+  Takes: a (pointer to read-only whole number), n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Repeats up to n times, with i counting from 0:
+         1. Checks the value of item i of a:
+            If it is 7:
+              1. Stops and gives back i.
+            In any other case:
+              (does nothing)
+    2. Stops and gives back negative 1.
+
+Function count_rows (line 32)
+  Takes: rows (whole number), cols (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates seen (whole number), starting at 0.
+    2. Repeats rows times, with r counting from 0:
+         1. Repeats up to cols times, with c counting from 0:
+              1. If c is equal to 2:
+                   1. Stops the loop.
+              2. Adds 1 to seen.
+    3. Stops and gives back seen.
+
+Function pick (line 45)
+  Takes: out (pointer to whole number), big (whole number)
+  Gives back: nothing
+  Steps:
+    1. Puts 100 into the location out points to if big is not zero; otherwise puts 1 there.
+
+Covered: 20 of 20 statements.

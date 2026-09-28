@@ -1,0 +1,44 @@
+Modes of Level: LOW, MID, or HIGH.
+
+Function classify
+  Takes: code (whole number)
+  Gives back: a whole number
+  What it does:
+    (exact step) Creates score (whole number), starting at 0.
+    (exact step) Checks the value of code:
+       If it is 0 or 1:
+         1. Sets score to 5.
+       If it is 2:
+         1. Sets score to 7.
+         2. Then continues straight into the next case's steps (there is no break here).
+       If it is 3:
+         1. Adds 1 to score.
+         2. If score is greater than 7:
+              1. Leaves the case check (goes on to the step after it).
+         3. Sets score to 0.
+       In any other case:
+         1. Sets score to negative 1.
+    Then gives back score.
+  Changes: nothing outside itself.
+
+Function count_high
+  Takes: levels (list of whole numbers, only read), n (whole number)
+  Gives back: a whole number
+  What it does:
+    (exact step) Creates highs (whole number), starting at 0.
+    (exact step) Repeats n times, with i counting from 0:
+         1. Checks the value of item i of levels:
+            If it is HIGH:
+              1. Adds 1 to highs.
+            If it is LOW:
+              1. Skips the rest of this round and moves to the next round.
+            If it is none of these, nothing here happens.
+    Then gives back highs.
+  Changes: nothing outside itself.
+
+Function letters_first
+  Takes: s (text)
+  Gives back: a whole number
+  What it does:
+    Gives back (the result of calling isalpha with item 0 of s) plus [Not yet supported: expression written with a macro (line 46)].
+  Changes: nothing outside itself.

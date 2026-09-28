@@ -1,0 +1,43 @@
+Choice Level has the options LOW (1), MID (2), and HIGH (10).
+
+Function classify (line 7)
+  Takes: code (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates score (whole number), starting at 0.
+    2. Checks the value of code:
+       If it is 0 or 1:
+         1. Sets score to 5.
+       If it is 2:
+         1. Sets score to 7.
+         2. Then continues straight into the next case's steps (there is no break here).
+       If it is 3:
+         1. Adds 1 to score.
+         2. If score is greater than 7:
+              1. Leaves the case check (goes on to the step after it).
+         3. Sets score to 0.
+       In any other case:
+         1. Sets score to negative 1.
+    3. Stops and gives back score.
+
+Function count_high (line 31)
+  Takes: levels (pointer to read-only whole number), n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates highs (whole number), starting at 0.
+    2. Repeats n times, with i counting from 0:
+         1. Checks the value of item i of levels:
+            If it is HIGH:
+              1. Adds 1 to highs.
+            If it is LOW:
+              1. Skips the rest of this round and moves to the next round.
+            If it is none of these, nothing here happens.
+    3. Stops and gives back highs.
+
+Function letters_first (line 45)
+  Takes: s (text)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back (the result of calling isalpha with item 0 of s) plus [Not yet supported: expression written with a macro (line 46)].
+
+Covered: 21 of 22 statements. Not yet supported: 1 (shown in brackets above).

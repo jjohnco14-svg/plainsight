@@ -1,0 +1,10 @@
+Function fill_count (line 2)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Creates n (whole number), starting at 0.
+    2. Repeats MAX (10) times, with i counting from 0:
+         1. Adds 2 to n.
+    3. Stops and gives back n.
+
+Covered: 4 of 4 statements.

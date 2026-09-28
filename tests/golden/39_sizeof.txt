@@ -1,0 +1,8 @@
+Function bytes_needed (line 2)
+  Takes: n (count)
+  Gives back: a count
+  Steps:
+    1. Creates sample (whole number), starting at 0.
+    2. Stops and gives back (n times (the size in bytes of one int)) plus (the size in bytes of sample).
+
+Covered: 2 of 2 statements.

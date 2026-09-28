@@ -1,0 +1,9 @@
+Shared variable threshold (whole number), starting at 50.
+
+Function is_high (line 2)
+  Takes: value (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back 1 if value is greater than threshold, otherwise 0.
+
+Covered: 2 of 2 statements.

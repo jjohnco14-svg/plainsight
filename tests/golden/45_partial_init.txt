@@ -1,0 +1,14 @@
+Record Pair holds a (whole number) and b (whole number).
+
+Shared variable table (list of 4 read-only whole numbers), starting at the values 7, 8, 9, and 10.
+
+Function partial (line 9)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Creates buf (list of 8 bytes), holding the values 0, with every other item set to zero.
+    2. Creates some (list of 3 whole numbers), holding the values 1 and 2, with every other item set to zero.
+    3. Creates p (Pair record), with a set to 5 and b set to zero.
+    4. Stops and gives back (item 0 of buf) plus (item 2 of some) plus p's b plus (item 1 of table).
+
+Covered: 5 of 5 statements.

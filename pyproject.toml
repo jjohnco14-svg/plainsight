@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plainsight"
+version = "0.1.0"
+description = "Exact plain-English descriptions and facts for C code"
+requires-python = ">=3.10"
+dependencies = []  # needs the clang program installed (see PROJECT.md)
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+plainsight = "plainsight.cli:main"
+
+[tool.setuptools]
+packages = ["plainsight", "plainsight._dictum"]
+
+[tool.setuptools.package-data]
+plainsight = ["docs/*.md"]

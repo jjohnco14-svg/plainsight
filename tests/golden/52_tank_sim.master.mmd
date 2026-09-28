@@ -1,0 +1,69 @@
+%% How 52_tank_sim.c works
+flowchart TD
+    subgraph cluster_main ["main"]
+        main__n1(["start main<br/>takes: nothing"])
+        main__n2["levels starts at the values 50,<br/>18, 25, 40, 70, 92, 95, and 60<br/>flow starts at the values true,<br/>true, true, true, true, true,<br/>true, and true<br/>make pump<br/>calls pump_init with the<br/>location of pump"]
+        main__n3{{"for each m from 0 to 8 minus 1"}}
+        main__n4["calls pump_step with the<br/>location of pump, item m of<br/>levels, and item m of flow<br/>calls report with the location<br/>of pump and m"]
+        main__n5["prints #quot,fill time: [the result<br/>of calling minutes_to_fill with<br/>levels and 8] minutes#quot, and<br/>starts a new line"]
+        main__n6(["gives back 0"])
+    end
+    subgraph cluster_minutes_to_fill ["minutes_to_fill"]
+        minutes_to_fill__n1(["start minutes_to_fill<br/>takes: levels (list of whole<br/>numbers, only read), n (whole<br/>number)"])
+        minutes_to_fill__n2["start starts at negative 1"]
+        minutes_to_fill__n3{{"for each i from 0 to n minus 1"}}
+        minutes_to_fill__n4{"start is below 0 and item i of<br/>levels is below 20 (LOW_LEVEL)?"}
+        minutes_to_fill__n5["start becomes i"]
+        minutes_to_fill__n6{"start is at least 0 and item i<br/>of levels is at least 90<br/>(HIGH_LEVEL)?"}
+        minutes_to_fill__n7(["gives back i minus start"])
+        minutes_to_fill__n8(["gives back negative 1"])
+    end
+    subgraph cluster_pump_init ["pump_init"]
+        pump_init__n1(["start pump_init<br/>takes: p (a Pump record, changed<br/>in place)"])
+        pump_init__n2["state becomes IDLE<br/>faults becomes 0<br/>run_minutes becomes 0"]
+        pump_init__n3(["end"])
+    end
+    subgraph cluster_pump_step ["pump_step"]
+        pump_step__start(["start pump_step<br/>looks at the current state"])
+        pump_step__IDLE("IDLE")
+        pump_step__PUMPING("PUMPING<br/>every time first: run_minutes<br/>goes up by 1")
+        pump_step__FAULT("FAULT<br/>never leaves this mode")
+        pump_step__note>"no arrow applies = state stays<br/>the same"]
+    end
+    subgraph cluster_report ["report"]
+        report__n1(["start report<br/>takes: p (a read-only Pump<br/>record), minute (whole number)"])
+        report__n2["prints #quot,minute [minute]: state<br/>[state], faults [faults]#quot, and<br/>starts a new line<br/>total_faults becomes faults"]
+        report__n3(["end"])
+    end
+    shared__total_faults[("shared: total_faults<br/>(whole number)")]
+    main__n1 --> main__n2
+    main__n2 --> main__n3
+    main__n3 -->|"next"| main__n4
+    main__n4 --> main__n3
+    main__n3 -->|"finished"| main__n5
+    main__n5 --> main__n6
+    minutes_to_fill__n1 --> minutes_to_fill__n2
+    minutes_to_fill__n2 --> minutes_to_fill__n3
+    minutes_to_fill__n3 -->|"next"| minutes_to_fill__n4
+    minutes_to_fill__n4 -->|"yes"| minutes_to_fill__n5
+    minutes_to_fill__n5 --> minutes_to_fill__n6
+    minutes_to_fill__n4 -->|"no"| minutes_to_fill__n6
+    minutes_to_fill__n6 -->|"yes"| minutes_to_fill__n7
+    minutes_to_fill__n6 -->|"no"| minutes_to_fill__n3
+    minutes_to_fill__n3 -->|"finished"| minutes_to_fill__n8
+    pump_init__n1 --> pump_init__n2
+    pump_init__n2 --> pump_init__n3
+    pump_step__start -->|"if now IDLE"| pump_step__IDLE
+    pump_step__start -->|"if now PUMPING"| pump_step__PUMPING
+    pump_step__start -->|"if now FAULT"| pump_step__FAULT
+    pump_step__IDLE -->|"if level is below 20<br/>(LOW_LEVEL): run_minutes becomes<br/>0"| pump_step__PUMPING
+    pump_step__PUMPING -->|"if (not flowing) and run_minutes<br/>is over 2: faults goes up by 1,<br/>then if faults is at least 3<br/>(MAX_FAULTS)"| pump_step__FAULT
+    pump_step__PUMPING -->|"if (not flowing) and run_minutes<br/>is over 2: faults goes up by 1,<br/>then if faults is below 3<br/>(MAX_FAULTS)"| pump_step__IDLE
+    pump_step__PUMPING -->|"otherwise, if level is at least<br/>90 (HIGH_LEVEL)"| pump_step__IDLE
+    report__n1 --> report__n2
+    report__n2 --> report__n3
+    main__n2 -.->|"runs pump_init"| pump_init__n1
+    main__n4 -.->|"runs report"| report__n1
+    main__n4 -.->|"runs pump_step"| pump_step__start
+    main__n5 -.->|"runs minutes_to_fill"| minutes_to_fill__n1
+    report__n1 -.->|"changes"| shared__total_faults

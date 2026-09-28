@@ -1,0 +1,11 @@
+Function ends_line (line 1)
+  Takes: s (text)
+  Gives back: a whole number
+  Steps:
+    1. Creates nl (character), starting at the new-line character.
+    2. Creates greeting (text), starting at "hi there".
+    3. If (item 0 of s) is equal to nl:
+         1. Stops and gives back 1.
+    4. Stops and gives back 1 if (item 0 of greeting) is equal to the character 'h', otherwise 0.
+
+Covered: 5 of 5 statements.

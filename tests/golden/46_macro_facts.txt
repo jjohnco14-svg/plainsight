@@ -1,0 +1,29 @@
+Shared variable codes (list of 4 whole numbers), starting at the values 3, 1, 4, and 1.
+
+Shared variable flags (whole number), starting at 0.
+
+Function decode (line 12)
+  Takes: i (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back the result of the macro LOOKUP with i.
+
+Function set_flags (line 16)
+  Takes: nothing
+  Gives back: nothing
+  Steps:
+    1. Sets flags to FLAG_A (8) bitwise-or FLAG_B (32).
+
+Function half_max (line 20)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back the whole-number part of INT_MAX (2147483647) divided by 2.
+
+Function run_callback (line 24)
+  Takes: cb (pointer to a function (Callback)), v (whole number)
+  Gives back: nothing
+  Steps:
+    1. [Not yet supported: call through a function pointer (line 25)] -- this step is not described.
+
+Covered: 5 of 6 statements. Not yet supported: 1 (shown in brackets above).

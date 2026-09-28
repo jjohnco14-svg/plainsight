@@ -1,0 +1,43 @@
+Choice Mode has the options WAIT (0), RUN (1), and ALARM (2).
+
+Record Machine holds mode (Mode choice) and ticks (whole number).
+
+Shared variable alarms (whole number), starting at 0.
+
+Function sound_alarm (line 10)
+  Takes: nothing
+  Gives back: nothing
+  Steps:
+    1. Adds 1 to alarms.
+
+Function sensor_ok (line 14)
+  Takes: reading (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back 1 if reading is less than 100, otherwise 0.
+
+Function machine_step (line 19)
+  Takes: m (pointer to Machine record), reading (whole number)
+  Gives back: nothing
+  Steps:
+    1. Checks the value of the mode of what m points to:
+       If it is WAIT:
+         1. If reading is greater than 0:
+              1. Puts RUN into the mode of what m points to.
+       If it is RUN:
+         1. If reading is at least 100:
+              1. Calls sound_alarm.
+              2. Puts ALARM into the mode of what m points to.
+       If it is ALARM:
+         (does nothing)
+       If it is none of these, nothing here happens.
+
+Function check (line 38)
+  Takes: reading (whole number)
+  Gives back: a whole number
+  Steps:
+    1. If (the result of calling sensor_ok with reading) is not zero:
+         1. Stops and gives back 1.
+    2. Stops and gives back 0.
+
+Covered: 16 of 16 statements.

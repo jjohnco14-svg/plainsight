@@ -1,0 +1,28 @@
+Function main (line 4)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Creates c (whole number), not yet given a value.
+    2. Creates lines (whole number), starting at 0.
+    3. Creates words (whole number), starting at 0.
+    4. Creates longest (whole number), starting at 0.
+    5. Creates current (whole number), starting at 0.
+    6. While c, newly set to the result of calling getchar, is not equal to EOF, repeats:
+         1. If c is equal to the new-line character:
+              1. Adds 1 to lines.
+         2. If (the result of calling isspace with c) is not zero:
+              1. If current is greater than 0:
+                   1. Adds 1 to words.
+                   2. If current is greater than longest:
+                        1. Sets longest to current.
+                   3. Sets current to 0.
+            Otherwise:
+              1. Adds 1 to current.
+    7. If current is greater than 0:
+         1. Adds 1 to words.
+         2. If current is greater than longest:
+              1. Sets longest to current.
+    8. Prints "lines: [lines](new line)words: [words](new line)longest word: [longest]" and starts a new line.
+    9. Stops and gives back 0.
+
+Covered: 21 of 21 statements.

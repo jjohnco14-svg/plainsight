@@ -1,0 +1,9 @@
+Function must_be_positive (line 3)
+  Takes: v (whole number)
+  Gives back: nothing
+  Steps:
+    1. If v is at most 0:
+         1. Prints to the error output "bad value [v]" and starts a new line.
+         2. Ends the whole program with status 1.
+
+Covered: 3 of 3 statements.

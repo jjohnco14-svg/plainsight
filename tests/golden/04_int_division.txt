@@ -1,0 +1,10 @@
+Function divide (line 1)
+  Takes: a (whole number), b (whole number), x (fractional number), y (fractional number)
+  Gives back: a fractional number
+  Steps:
+    1. Creates q (whole number), starting at the whole-number part of a divided by b.
+    2. Creates r (whole number), starting at the remainder of a divided by b.
+    3. Creates d (fractional number), starting at x divided by y.
+    4. Stops and gives back q plus r plus d.
+
+Covered: 4 of 4 statements.

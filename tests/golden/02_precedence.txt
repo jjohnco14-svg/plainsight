@@ -1,0 +1,9 @@
+Function mixed (line 1)
+  Takes: a (whole number), b (whole number), c (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates x (whole number), starting at a plus (b times c).
+    2. Creates y (whole number), starting at (a plus b) times c.
+    3. Stops and gives back x minus y.
+
+Covered: 3 of 3 statements.

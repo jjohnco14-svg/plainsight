@@ -1,0 +1,31 @@
+Modes of Light: GREEN, YELLOW, or RED.
+
+Record Crossing holds light and timer.
+
+Function crossing_tick
+  Takes: c (a Crossing record, changed in place), button_pressed (truth value)
+  What it does:
+    Moves light between modes, depending on its current mode:
+      In GREEN:
+        - every time, first: timer goes up by 1
+        - if timer is at least 30 (GREEN_TIME) or (button_pressed and timer is at least 10 (MIN_GREEN)): goes to YELLOW; timer becomes 0
+        - otherwise: it stays in GREEN
+      In YELLOW:
+        - every time, first: timer goes up by 1
+        - if timer is at least 5 (YELLOW_TIME): goes to RED; timer becomes 0
+        - otherwise: it stays in YELLOW
+      In RED:
+        - every time, first: timer goes up by 1
+        - if timer is at least 20 (RED_TIME): goes to GREEN; timer becomes 0
+        - otherwise: it stays in RED
+      Any other value: nothing happens.
+  Changes: only the record it's given (c).
+
+Function count_rush_hours
+  Takes: cars (list of whole numbers, only read), hours (whole number)
+  Gives back: a whole number
+  What it does:
+    Goes through the items of cars, position 0 up to hours minus 1:
+      - counts the items that are over 100, in rush (starting from 0)
+    Then gives back rush.
+  Changes: nothing outside itself.

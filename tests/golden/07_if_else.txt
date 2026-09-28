@@ -1,0 +1,10 @@
+Function sign (line 1)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. If n is less than 0:
+         1. Stops and gives back negative 1.
+       Otherwise:
+         1. Stops and gives back 1.
+
+Covered: 3 of 3 statements.

@@ -1,0 +1,9 @@
+Function half_of_max (line 1)
+  Takes: a (whole number), b (whole number)
+  Gives back: a fractional number
+  Steps:
+    1. Creates m (whole number), starting at a if a is greater than b, otherwise b.
+    2. Creates h (fractional number), starting at (m converted to fractional number) divided by 2.
+    3. Stops and gives back h.
+
+Covered: 3 of 3 statements.

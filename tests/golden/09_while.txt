@@ -1,0 +1,11 @@
+Function count_down (line 1)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates steps (whole number), starting at 0.
+    2. While n is greater than 0, repeats:
+         1. Sets n to n minus 1.
+         2. Adds 1 to steps.
+    3. Stops and gives back steps.
+
+Covered: 5 of 5 statements.

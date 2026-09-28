@@ -1,0 +1,48 @@
+Choice ButtonState has the options RELEASED (0) and PRESSED (1).
+
+Record Debouncer holds stable (ButtonState choice), last_raw (truth value), same_count (whole number), and presses (whole number).
+
+Function db_init (line 15)
+  Takes: d (pointer to Debouncer record)
+  Gives back: nothing
+  Steps:
+    1. Puts RELEASED into the stable of what d points to.
+    2. Puts false (0) into the last_raw of what d points to.
+    3. Puts 0 into the same_count of what d points to.
+    4. Puts 0 into the presses of what d points to.
+
+Function db_sample (line 22)
+  Takes: d (pointer to Debouncer record), raw (truth value)
+  Gives back: nothing
+  Steps:
+    1. If raw is equal to (the last_raw of what d points to):
+         1. Adds 1 to the same_count of what d points to.
+       Otherwise:
+         1. Puts 1 into the same_count of what d points to.
+         2. Puts raw into the last_raw of what d points to.
+    2. If (the same_count of what d points to) is less than STABLE_SAMPLES (3):
+         1. Stops here.
+    3. Checks the value of the stable of what d points to:
+       If it is RELEASED:
+         1. If raw:
+              1. Puts PRESSED into the stable of what d points to.
+              2. Adds 1 to the presses of what d points to.
+       If it is PRESSED:
+         1. If not raw:
+              1. Puts RELEASED into the stable of what d points to.
+       If it is none of these, nothing here happens.
+
+Function main (line 47)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Creates samples (list of 16 read-only truth values), holding the values 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, and 0.
+    2. Creates n (whole number), starting at the number of items in samples (16).
+    3. Creates d (Debouncer record), not yet given a value.
+    4. Calls db_init with the location of d.
+    5. Repeats n times, with i counting from 0:
+         1. Calls db_sample with the location of d and item i of samples.
+    6. Prints "presses: [d's presses]" and starts a new line.
+    7. Stops and gives back 0.
+
+Covered: 27 of 27 statements.

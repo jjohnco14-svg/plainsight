@@ -1,0 +1,17 @@
+Function shrink (line 1)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates rounds (whole number), starting at 0.
+    2. Loop:
+       Before starting:
+         1. Creates i (whole number), starting at 0.
+       Keeps going while i is less than n.
+       After each round:
+         1. Adds 1 to i.
+       Each round:
+         1. Subtracts 1 from n.
+         2. Adds 1 to rounds.
+    3. Stops and gives back rounds.
+
+Covered: 5 of 5 statements.

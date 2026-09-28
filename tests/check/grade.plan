@@ -1,0 +1,6 @@
+function: grade
+every time first: graded goes up by 1
+if score plus bonus is at least 90: gives back 4
+otherwise, if score plus bonus is at least 80: gives back 3
+otherwise, if score plus bonus is at least 70: gives back 2
+otherwise: gives back 0

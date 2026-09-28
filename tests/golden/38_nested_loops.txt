@@ -1,0 +1,13 @@
+Function find_pair (line 1)
+  Takes: a (pointer to read-only whole number), n (whole number), target (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates hits (whole number), starting at 0.
+    2. Repeats n times, with i counting from 0:
+         1. Repeats up to n times, with j counting from 0:
+              1. If (item i of a) plus (item j of a) is equal to target:
+                   1. Adds 1 to hits.
+                   2. Stops the loop.
+    3. Stops and gives back hits.
+
+Covered: 7 of 7 statements.

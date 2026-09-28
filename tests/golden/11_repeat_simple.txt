@@ -1,0 +1,10 @@
+Function sum_to (line 1)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates total (whole number), starting at 0.
+    2. Repeats n times, with i counting from 0:
+         1. Adds i to total.
+    3. Stops and gives back total.
+
+Covered: 4 of 4 statements.

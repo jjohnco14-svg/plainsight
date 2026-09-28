@@ -1,0 +1,47 @@
+Modes of ButtonState: RELEASED or PRESSED.
+
+Record Debouncer holds stable, last_raw, same_count, and presses.
+
+Function db_init
+  Takes: d (a Debouncer record, changed in place)
+  What it does:
+    - stable becomes RELEASED
+    - last_raw becomes false
+    - same_count becomes 0
+    - presses becomes 0
+  Changes: only the record it's given (d).
+
+Function db_sample
+  Takes: d (a Debouncer record, changed in place), raw (truth value)
+  What it does:
+    (exact step) If raw is equal to last_raw:
+         1. Adds 1 to same_count.
+       Otherwise:
+         1. Puts 1 into same_count.
+         2. Puts raw into last_raw.
+    (exact step) If same_count is less than STABLE_SAMPLES (3):
+         1. Stops here.
+    Moves stable between modes, depending on its current mode:
+      In RELEASED:
+        - if raw: goes to PRESSED; presses goes up by 1
+        - otherwise: it stays in RELEASED
+      In PRESSED:
+        - if not raw: goes to RELEASED
+        - otherwise: it stays in PRESSED
+      Any other value: nothing happens.
+  Changes: only the record it's given (d).
+
+Function main
+  Takes: nothing
+  Gives back: a whole number
+  What it does:
+    (exact step) Creates samples (list of 16 read-only truth values), holding the values 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, and 0.
+    (exact step) Creates n (whole number), starting at the number of items in samples (16).
+    (exact step) Creates d (Debouncer record), not yet given a value.
+    - calls db_init with the location of d
+    (exact step) Repeats n times, with i counting from 0:
+         1. Calls db_sample with the location of d and item i of samples.
+    - prints "presses: [d's presses]" and starts a new line
+    Then gives back 0.
+  Changes: no data outside itself.
+  Also: reads or writes input/output (printf); calls db_init and db_sample (their effects aren't included here yet).

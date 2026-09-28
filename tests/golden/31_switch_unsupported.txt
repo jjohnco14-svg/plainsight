@@ -1,0 +1,13 @@
+Function pick (line 1)
+  Takes: k (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates r (whole number), starting at 0.
+    2. Checks the value of k:
+       If it is 1:
+         1. Sets r to 10.
+       In any other case:
+         1. Sets r to 20.
+    3. Stops and gives back r.
+
+Covered: 7 of 7 statements.

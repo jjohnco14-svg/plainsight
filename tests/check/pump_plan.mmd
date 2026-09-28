@@ -1,0 +1,9 @@
+%% function: pump_step
+%% Approved plan for the tank pump (written in Plainsight's own diagram words)
+stateDiagram-v2
+    IDLE --> PUMPING : if level is below 20: run_minutes becomes 0
+    PUMPING --> FAULT : if not flowing and run_minutes is over 2: faults goes up by 1, then if faults is at least 3
+    PUMPING --> IDLE : if not flowing and run_minutes is over 2: faults goes up by 1, then if faults is below 3
+    PUMPING --> IDLE : otherwise, if level is at least 90
+    note right of PUMPING : every time first: run_minutes goes up by 1
+    note right of FAULT : never leaves this mode

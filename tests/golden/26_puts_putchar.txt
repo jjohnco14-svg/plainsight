@@ -1,0 +1,10 @@
+Function banner (line 2)
+  Takes: title (text)
+  Gives back: nothing
+  Steps:
+    1. Prints "=====" and starts a new line.
+    2. Prints the text in title and starts a new line.
+    3. Prints the character '*'.
+    4. Starts a new line.
+
+Covered: 4 of 4 statements.

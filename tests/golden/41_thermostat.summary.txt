@@ -1,0 +1,59 @@
+Modes of HeatState: HEAT_OFF or HEAT_ON.
+
+Shared variable readings (list of 5 fractional numbers).
+
+Shared variable next_slot (whole number).
+
+Shared variable filled (whole number).
+
+Shared variable heater_on (truth value).
+
+Function add_reading
+  Takes: celsius (fractional number)
+  What it does:
+    - item next_slot of readings becomes celsius
+    - next_slot becomes the remainder of (next_slot plus 1) divided by 5 (WINDOW)
+    (exact step) If filled is less than WINDOW (5):
+         1. Adds 1 to filled.
+  Changes: only shared variable filled, shared variable next_slot, and shared variable readings.
+
+Function average
+  Takes: nothing
+  Gives back: a fractional number
+  What it does:
+    (exact step) If filled is equal to 0:
+         1. Stops and gives back 0.0.
+    Goes through the items of readings, position 0 up to filled minus 1:
+      - adds up all the items into sum (starting from 0.0)
+    Then gives back sum divided by filled.
+  Changes: nothing outside itself.
+
+Function control
+  Takes: nothing
+  What it does:
+    (exact step) Creates avg (fractional number), starting at the result of calling average.
+    (exact step) If avg is less than TARGET_C (22.0) minus 0.5 and (not heater_on):
+         1. Sets heater_on to true (1).
+         2. Prints "heater ON at [avg, to 1 decimal place] C" and starts a new line.
+       Otherwise, if avg is greater than TARGET_C (22.0) plus 0.5 and heater_on:
+         1. Sets heater_on to false (0).
+         2. Prints "heater OFF at [avg, to 1 decimal place] C" and starts a new line.
+  Changes: shared variable heater_on.
+  Also: reads or writes input/output (printf); calls average (their effects aren't included here yet).
+
+Function state_of
+  Takes: nothing
+  Gives back: a HeatState choice
+  What it does:
+    Gives back HEAT_ON if heater_on, otherwise HEAT_OFF.
+  Changes: nothing outside itself.
+
+Function clamp_all
+  Takes: values (list of fractional numbers, changed in place), n (whole number), lo (fractional number), hi (fractional number)
+  What it does:
+    (exact step) Repeats n times, with i counting from 0:
+         1. If (item i of values) is less than lo:
+              1. Puts lo into item i of values.
+            Otherwise, if (item i of values) is greater than hi:
+              1. Puts hi into item i of values.
+  Changes: only what values points to.

@@ -1,0 +1,14 @@
+Function reset (line 1)
+  Takes: p (pointer to whole number)
+  Gives back: nothing
+  Steps:
+    1. Puts 0 into the location p points to.
+
+Function reset_twice (line 4)
+  Takes: p (pointer to whole number)
+  Gives back: nothing
+  Steps:
+    1. Calls reset with p.
+    2. Calls reset with p.
+
+Covered: 3 of 3 statements.

@@ -1,0 +1,22 @@
+Shared variable limit (whole number), starting at 10.
+
+Function tick (line 2)
+  Takes: nothing
+  Gives back: nothing
+  Steps:
+    1. Sets limit to limit minus 1.
+
+Function run (line 5)
+  Takes: nothing
+  Gives back: nothing
+  Steps:
+    1. Loop:
+       Before starting:
+         1. Creates i (whole number), starting at 0.
+       Keeps going while i is less than limit.
+       After each round:
+         1. Adds 1 to i.
+       Each round:
+         1. Calls tick.
+
+Covered: 4 of 4 statements.

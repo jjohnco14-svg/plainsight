@@ -1,0 +1,9 @@
+%% function: gate_tick
+stateDiagram-v2
+    CLOSED --> OPEN : if box_arrived and not bin_full: open_seconds becomes 0, blocked_seconds becomes 0
+    OPEN --> JAMMED : if blocked_seconds is at least 5
+    OPEN --> CLOSED : otherwise, if open_seconds is at least 3 and not sensor_blocked
+    JAMMED --> CLOSED : if reset_pressed: jams goes up by 1
+    note right of OPEN : every time first: open_seconds goes up by 1
+    note right of OPEN : every time first, if sensor_blocked: blocked_seconds goes up by 1
+    note right of OPEN : every time first, if not sensor_blocked: blocked_seconds becomes 0

@@ -1,0 +1,6 @@
+%% function: log_step
+stateDiagram-v2
+    EMPTY --> LOGGING : always
+    LOGGING --> FULL : if count is at least 3: count goes up by 1
+    note right of EMPTY : every time first: count becomes 1
+    note right of FULL : never leaves this mode

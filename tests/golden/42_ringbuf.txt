@@ -1,0 +1,58 @@
+Record RingBuf holds items (list of 4 whole numbers), head (whole number), and count (whole number).
+
+Function rb_init (line 12)
+  Takes: rb (pointer to RingBuf record)
+  Gives back: nothing
+  Steps:
+    1. Puts 0 into the head of what rb points to.
+    2. Puts 0 into the count of what rb points to.
+
+Function rb_push (line 17)
+  Takes: rb (pointer to RingBuf record), value (whole number)
+  Gives back: a truth value
+  Steps:
+    1. If (the count of what rb points to) is equal to CAP (4):
+         1. Stops and gives back false (0).
+    2. Creates tail (whole number), starting at the remainder of ((the head of what rb points to) plus (the count of what rb points to)) divided by CAP (4).
+    3. Puts value into item tail of (the items of what rb points to).
+    4. Adds 1 to the count of what rb points to.
+    5. Stops and gives back true (1).
+
+Function rb_pop (line 27)
+  Takes: rb (pointer to RingBuf record), out (pointer to whole number)
+  Gives back: a truth value
+  Steps:
+    1. If (the count of what rb points to) is equal to 0:
+         1. Stops and gives back false (0).
+    2. Puts item (the head of what rb points to) of (the items of what rb points to) into the location out points to.
+    3. Puts the remainder of ((the head of what rb points to) plus 1) divided by CAP (4) into the head of what rb points to.
+    4. Subtracts 1 from the count of what rb points to.
+    5. Stops and gives back true (1).
+
+Function main (line 37)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Creates rb (RingBuf record), not yet given a value.
+    2. Calls rb_init with the location of rb.
+    3. Loop:
+       Before starting:
+         1. Creates v (whole number), starting at 1.
+       Keeps going while v is at most 5.
+       After each round:
+         1. Adds 1 to v.
+       Each round:
+         1. If not (the result of calling rb_push with the location of rb and v):
+              1. Prints "push [v] refused" and starts a new line.
+    4. Creates x (whole number), not yet given a value.
+    5. Calls rb_pop with the location of rb and the location of x.
+    6. Prints "[x] ".
+    7. Calls rb_pop with the location of rb and the location of x.
+    8. Prints "[x] ".
+    9. Calls rb_push with the location of rb and 6.
+    10. While the result of calling rb_pop with the location of rb and the location of x, repeats:
+         1. Prints "[x] ".
+    11. Starts a new line.
+    12. Stops and gives back 0.
+
+Covered: 29 of 29 statements.

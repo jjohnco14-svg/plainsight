@@ -1,0 +1,7 @@
+Function add (line 1)
+  Takes: a (whole number), b (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Stops and gives back a plus b.
+
+Covered: 1 of 1 statements.

@@ -1,0 +1,38 @@
+Modes of PumpState: IDLE, PUMPING, or FAULT.
+
+Record Pump holds state, faults, and run_minutes.
+
+Function pump_init
+  Takes: p (a Pump record, changed in place)
+  What it does:
+    - state becomes IDLE
+    - faults becomes 0
+    - run_minutes becomes 0
+  Changes: only the record it's given (p).
+
+Function pump_step
+  Takes: p (a Pump record, changed in place), level (whole number), flowing (truth value)
+  What it does:
+    Moves state between modes, depending on its current mode:
+      In IDLE:
+        - if level is below 20 (LOW_LEVEL): goes to PUMPING; run_minutes becomes 0
+        - otherwise: it stays in IDLE
+      In PUMPING:
+        - every time, first: run_minutes goes up by 1
+        - if (not flowing) and run_minutes is over 2: faults goes up by 1; then goes to FAULT if faults is at least 3 (MAX_FAULTS), otherwise to IDLE
+        - otherwise, if level is at least 90 (HIGH_LEVEL): goes to IDLE
+        - otherwise: it stays in PUMPING
+      In FAULT:
+        - nothing ever changes; it stays in FAULT
+      Any other value: nothing happens.
+  Changes: only the record it's given (p).
+
+Function minutes_to_fill
+  Takes: levels (list of whole numbers, only read), n (whole number)
+  Gives back: a whole number
+  What it does:
+    Goes through the items of levels, position 0 up to n minus 1 (it may stop early):
+      - remembers in start the position of the first item that is below 20 (LOW_LEVEL) (start starts at -1, meaning none found yet)
+      - once start has been found, stops at the first item that is at least 90 (HIGH_LEVEL), and gives back its position minus start
+    If it gets through every item without stopping, gives back negative 1.
+  Changes: nothing outside itself.

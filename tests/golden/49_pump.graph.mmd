@@ -1,0 +1,40 @@
+%% pump_init
+flowchart TD
+    n1(["start pump_init<br/>takes: p (a Pump record, changed<br/>in place)"])
+    n2["state becomes IDLE<br/>faults becomes 0<br/>run_minutes becomes 0"]
+    n3(["end"])
+    n1 --> n2
+    n2 --> n3
+
+%% pump_step: how state changes
+%% (no arrow applies = state stays the same)
+stateDiagram-v2
+    IDLE
+    PUMPING
+    FAULT
+    IDLE --> PUMPING : if level is below 20<br/>(LOW_LEVEL): run_minutes becomes<br/>0
+    PUMPING --> FAULT : if (not flowing) and run_minutes<br/>is over 2: faults goes up by 1,<br/>then if faults is at least 3<br/>(MAX_FAULTS)
+    PUMPING --> IDLE : if (not flowing) and run_minutes<br/>is over 2: faults goes up by 1,<br/>then if faults is below 3<br/>(MAX_FAULTS)
+    PUMPING --> IDLE : otherwise, if level is at least<br/>90 (HIGH_LEVEL)
+    note right of PUMPING : every time first: run_minutes<br/>goes up by 1
+    note right of FAULT : never leaves this mode
+
+%% minutes_to_fill
+flowchart TD
+    n1(["start minutes_to_fill<br/>takes: levels (list of whole<br/>numbers, only read), n (whole<br/>number)"])
+    n2["start starts at negative 1"]
+    n3{{"for each i from 0 to n minus 1"}}
+    n4{"start is below 0 and item i of<br/>levels is below 20 (LOW_LEVEL)?"}
+    n5["start becomes i"]
+    n6{"start is at least 0 and item i<br/>of levels is at least 90<br/>(HIGH_LEVEL)?"}
+    n7(["gives back i minus start"])
+    n8(["gives back negative 1"])
+    n1 --> n2
+    n2 --> n3
+    n3 -->|"next"| n4
+    n4 -->|"yes"| n5
+    n5 --> n6
+    n4 -->|"no"| n6
+    n6 -->|"yes"| n7
+    n6 -->|"no"| n3
+    n3 -->|"finished"| n8

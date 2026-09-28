@@ -1,0 +1,60 @@
+Record RingBuf holds items, head, and count.
+
+Function rb_init
+  Takes: rb (a RingBuf record, changed in place)
+  What it does:
+    - head becomes 0
+    - count becomes 0
+  Changes: only the record it's given (rb).
+
+Function rb_push
+  Takes: rb (a RingBuf record, changed in place), value (whole number)
+  Gives back: a truth value
+  What it does:
+    (exact step) If count is equal to CAP (4):
+         1. Stops and gives back false (0).
+    (exact step) Creates tail (whole number), starting at the remainder of (head plus count) divided by CAP (4).
+    - item tail of items becomes value
+    - count goes up by 1
+    Then gives back true.
+  Changes: only the record it's given (rb).
+
+Function rb_pop
+  Takes: rb (a RingBuf record, changed in place), out (pointer to whole number)
+  Gives back: a truth value
+  What it does:
+    (exact step) If count is equal to 0:
+         1. Stops and gives back false (0).
+    - the location out points to becomes item head of items
+    - head becomes the remainder of (head plus 1) divided by 4 (CAP)
+    - count goes down by 1
+    Then gives back true.
+  Changes: only what out points to and the record it's given (rb).
+
+Function main
+  Takes: nothing
+  Gives back: a whole number
+  What it does:
+    (exact step) Creates rb (RingBuf record), not yet given a value.
+    - calls rb_init with the location of rb
+    (exact step) Loop:
+       Before starting:
+         1. Creates v (whole number), starting at 1.
+       Keeps going while v is at most 5.
+       After each round:
+         1. Adds 1 to v.
+       Each round:
+         1. If not (the result of calling rb_push with the location of rb and v):
+              1. Prints "push [v] refused" and starts a new line.
+    (exact step) Creates x (whole number), not yet given a value.
+    - calls rb_pop with the location of rb and the location of x
+    - prints "[x] "
+    - calls rb_pop with the location of rb and the location of x
+    - prints "[x] "
+    - calls rb_push with the location of rb and 6
+    (exact step) While the result of calling rb_pop with the location of rb and the location of x, repeats:
+         1. Prints "[x] ".
+    - starts a new line
+    Then gives back 0.
+  Changes: no data outside itself.
+  Also: reads or writes input/output (printf); calls rb_init, rb_pop, and rb_push (their effects aren't included here yet).

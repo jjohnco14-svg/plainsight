@@ -1,0 +1,7 @@
+Function set_five (line 1)
+  Takes: p (pointer to whole number)
+  Gives back: nothing
+  Steps:
+    1. Puts 5 into the location p points to.
+
+Covered: 1 of 1 statements.

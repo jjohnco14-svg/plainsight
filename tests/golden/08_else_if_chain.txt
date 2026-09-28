@@ -1,0 +1,13 @@
+Function grade (line 1)
+  Takes: score (whole number)
+  Gives back: a whole number
+  Steps:
+    1. If score is at least 90:
+         1. Stops and gives back 4.
+       Otherwise, if score is at least 80:
+         1. Stops and gives back 3.
+       Otherwise, if score is at least 70:
+         1. Stops and gives back 2.
+    2. Stops and gives back 0.
+
+Covered: 7 of 7 statements.

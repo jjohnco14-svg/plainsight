@@ -1,0 +1,12 @@
+Function compound (line 1)
+  Takes: x (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Adds 2 to x.
+    2. Subtracts 1 from x.
+    3. Multiplies x by 3.
+    4. Divides x by 2, keeping only the whole-number part.
+    5. Replaces x with the remainder of x divided by 5.
+    6. Stops and gives back x.
+
+Covered: 6 of 6 statements.

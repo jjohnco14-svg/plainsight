@@ -1,0 +1,13 @@
+Function scratch (line 2)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates buf (pointer to whole number), starting at the result of calling malloc with (the size in bytes of one int) times n.
+    2. If buf is equal to NULL (points nowhere):
+         1. Stops and gives back negative 1.
+    3. Puts n into item 0 of buf.
+    4. Creates first (whole number), starting at item 0 of buf.
+    5. Frees the memory buf points to.
+    6. Stops and gives back first.
+
+Covered: 7 of 7 statements.

@@ -1,0 +1,9 @@
+Function steps (line 1)
+  Takes: i (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Adds 1 to i.
+    2. Subtracts 1 from i.
+    3. Stops and gives back i.
+
+Covered: 3 of 3 statements.

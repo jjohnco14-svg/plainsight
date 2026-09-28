@@ -1,0 +1,11 @@
+Function digits (line 1)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates d (whole number), starting at 0.
+    2. Repeats the following at least once, then again while n is not equal to 0:
+         1. Sets n to the whole-number part of n divided by 10.
+         2. Adds 1 to d.
+    3. Stops and gives back d.
+
+Covered: 5 of 5 statements.

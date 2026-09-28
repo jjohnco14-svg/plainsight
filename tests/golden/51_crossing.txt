@@ -1,0 +1,37 @@
+Choice Light has the options GREEN (0), YELLOW (1), and RED (2).
+
+Record Crossing holds light (Light choice) and timer (whole number).
+
+Function crossing_tick (line 16)
+  Takes: c (pointer to Crossing record), button_pressed (truth value)
+  Gives back: nothing
+  Steps:
+    1. Checks the value of the light of what c points to:
+       If it is GREEN:
+         1. Adds 1 to the timer of what c points to.
+         2. If (the timer of what c points to) is at least GREEN_TIME (30) or (button_pressed and (the timer of what c points to) is at least MIN_GREEN (10)):
+              1. Puts YELLOW into the light of what c points to.
+              2. Puts 0 into the timer of what c points to.
+       If it is YELLOW:
+         1. Adds 1 to the timer of what c points to.
+         2. If (the timer of what c points to) is at least YELLOW_TIME (5):
+              1. Puts RED into the light of what c points to.
+              2. Puts 0 into the timer of what c points to.
+       If it is RED:
+         1. Adds 1 to the timer of what c points to.
+         2. If (the timer of what c points to) is at least RED_TIME (20):
+              1. Puts GREEN into the light of what c points to.
+              2. Puts 0 into the timer of what c points to.
+       If it is none of these, nothing here happens.
+
+Function count_rush_hours (line 42)
+  Takes: cars (pointer to read-only whole number), hours (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates rush (whole number), starting at 0.
+    2. Repeats hours times, with h counting from 0:
+         1. If (item h of cars) is greater than 100:
+              1. Adds 1 to rush.
+    3. Stops and gives back rush.
+
+Covered: 22 of 22 statements.

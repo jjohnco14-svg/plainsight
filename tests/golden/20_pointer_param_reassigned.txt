@@ -1,0 +1,9 @@
+Function maybe_write (line 1)
+  Takes: p (pointer to whole number), q (pointer to whole number), use_q (whole number)
+  Gives back: nothing
+  Steps:
+    1. If use_q is not zero:
+         1. Sets p to q.
+    2. Puts 1 into the location p points to.
+
+Covered: 3 of 3 statements.

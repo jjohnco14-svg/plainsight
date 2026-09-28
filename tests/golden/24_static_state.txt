@@ -1,0 +1,9 @@
+Function next_id (line 1)
+  Takes: nothing
+  Gives back: a whole number
+  Steps:
+    1. Keeps count (whole number) between calls, starting at 0 before the program runs.
+    2. Adds 1 to count.
+    3. Stops and gives back count.
+
+Covered: 3 of 3 statements.

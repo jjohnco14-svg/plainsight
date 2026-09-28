@@ -1,0 +1,49 @@
+Function find
+  Takes: a (list of whole numbers, only read), n (whole number), x (whole number)
+  Gives back: a whole number
+  What it does:
+    Goes through the items of a, position 0 up to n minus 1 (it may stop early):
+      - stops at the first item that is x, and gives back its position
+    If it gets through every item without stopping, gives back negative 1.
+  Changes: nothing outside itself.
+
+Function check_all
+  Takes: a (list of whole numbers, only read), n (whole number)
+  What it does:
+    (exact step) Repeats up to n times, with i counting from 0:
+         1. If (item i of a) is less than 0:
+              1. Ends the whole program with status 1.
+  Changes: no data outside itself.
+  Also: can end the whole program.
+
+Function first_code
+  Takes: a (list of whole numbers, only read), n (whole number)
+  Gives back: a whole number
+  What it does:
+    (exact step) Repeats up to n times, with i counting from 0:
+         1. Checks the value of item i of a:
+            If it is 7:
+              1. Stops and gives back i.
+            In any other case:
+              (does nothing)
+    Then gives back negative 1.
+  Changes: nothing outside itself.
+
+Function count_rows
+  Takes: rows (whole number), cols (whole number)
+  Gives back: a whole number
+  What it does:
+    (exact step) Creates seen (whole number), starting at 0.
+    (exact step) Repeats rows times, with r counting from 0:
+         1. Repeats up to cols times, with c counting from 0:
+              1. If c is equal to 2:
+                   1. Stops the loop.
+              2. Adds 1 to seen.
+    Then gives back seen.
+  Changes: nothing outside itself.
+
+Function pick
+  Takes: out (pointer to whole number), big (whole number)
+  What it does:
+    - the location out points to becomes 100 if big is not zero, otherwise 1
+  Changes: only what out points to.

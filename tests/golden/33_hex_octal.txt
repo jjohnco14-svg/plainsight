@@ -1,0 +1,9 @@
+Function masks (line 1)
+  Takes: v (non-negative whole number)
+  Gives back: a non-negative whole number
+  Steps:
+    1. Creates low (non-negative whole number), starting at v bitwise-and 0x1F (31).
+    2. Creates mode (non-negative whole number), starting at 017 (octal, which is 15).
+    3. Stops and gives back (low shifted left by 2) bitwise-or mode.
+
+Covered: 3 of 3 statements.

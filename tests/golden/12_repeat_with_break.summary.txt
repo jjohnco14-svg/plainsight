@@ -1,0 +1,8 @@
+Function first_negative
+  Takes: values (list of whole numbers, only read), n (whole number)
+  Gives back: a whole number
+  What it does:
+    Goes through the items of values, position 0 up to n minus 1 (it may stop early):
+      - stops at the first item that is below 0, and remembers its position in found (found stays -1 if there is none)
+    Then gives back found.
+  Changes: nothing outside itself.

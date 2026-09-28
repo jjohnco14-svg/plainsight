@@ -1,0 +1,48 @@
+%% classify
+flowchart TD
+    n1(["start classify<br/>takes: code (whole number)"])
+    n2["score starts at 0"]
+    n3{"which value is code?"}
+    n4["score becomes 5"]
+    n5["score becomes 7"]
+    n6["score goes up by 1"]
+    n7{"score is over 7?"}
+    n8["score becomes 0"]
+    n9["score becomes negative 1"]
+    n10(["gives back score"])
+    n1 --> n2
+    n2 --> n3
+    n3 -->|"0 or 1"| n4
+    n3 -->|"2"| n5
+    n3 -->|"3"| n6
+    n5 -->|"falls through"| n6
+    n6 --> n7
+    n7 -->|"no"| n8
+    n3 -->|"anything else"| n9
+    n4 --> n10
+    n7 -->|"yes"| n10
+    n8 --> n10
+    n9 --> n10
+
+%% count_high
+flowchart TD
+    n1(["start count_high<br/>takes: levels (list of whole<br/>numbers, only read), n (whole<br/>number)"])
+    n2["highs starts at 0"]
+    n3{{"for each i from 0 to n minus 1"}}
+    n4{"which value is item i of levels?"}
+    n5["highs goes up by 1"]
+    n6(["gives back highs"])
+    n1 --> n2
+    n2 --> n3
+    n3 -->|"next"| n4
+    n4 -->|"HIGH"| n5
+    n4 -->|"LOW"| n3
+    n5 --> n3
+    n4 -->|"anything else"| n3
+    n3 -->|"finished"| n6
+
+%% letters_first
+flowchart TD
+    n1(["start letters_first<br/>takes: s (text)"])
+    n2(["gives back (the result of<br/>calling isalpha with item 0 of<br/>s) plus [Not yet supported:<br/>expression written with a macro<br/>(line 46)]"])
+    n1 --> n2

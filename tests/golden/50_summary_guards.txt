@@ -1,0 +1,39 @@
+Choice DoorMode has the options OPEN (0), CLOSED (1), and LOCKED (2).
+
+Record Door holds mode (DoorMode choice), previous (DoorMode choice), and count (whole number).
+
+Function close_door (line 10)
+  Takes: d (pointer to Door record)
+  Gives back: nothing
+  Steps:
+    1. Checks the value of the mode of what d points to:
+       If it is OPEN:
+         1. Puts CLOSED into the mode of what d points to.
+         2. Puts the mode of what d points to into the previous of what d points to.
+       If it is CLOSED or LOCKED:
+         (does nothing)
+       If it is none of these, nothing here happens.
+
+Function lock_door (line 23)
+  Takes: d (pointer to Door record)
+  Gives back: nothing
+  Steps:
+    1. Checks the value of the mode of what d points to:
+       If it is OPEN:
+         1. Adds 1 to the count of what d points to.
+         2. Then continues straight into the next case's steps (there is no break here).
+       If it is CLOSED:
+         1. Puts LOCKED into the mode of what d points to.
+       If it is LOCKED:
+         (does nothing)
+       If it is none of these, nothing here happens.
+
+Function bump (line 36)
+  Takes: d (pointer to Door record)
+  Gives back: a whole number
+  Steps:
+    1. Creates count (whole number), starting at the count of what d points to.
+    2. Puts count plus 1 into the count of what d points to.
+    3. Stops and gives back count.
+
+Covered: 14 of 14 statements.

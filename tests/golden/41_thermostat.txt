@@ -1,0 +1,59 @@
+Choice HeatState has the options HEAT_OFF (0) and HEAT_ON (1).
+
+Shared variable readings (list of 5 fractional numbers), starting at zero.
+
+Shared variable next_slot (whole number), starting at 0.
+
+Shared variable filled (whole number), starting at 0.
+
+Shared variable heater_on (truth value), starting at false (0).
+
+Function add_reading (line 14)
+  Takes: celsius (fractional number)
+  Gives back: nothing
+  Steps:
+    1. Puts celsius into item next_slot of readings.
+    2. Sets next_slot to the remainder of (next_slot plus 1) divided by WINDOW (5).
+    3. If filled is less than WINDOW (5):
+         1. Adds 1 to filled.
+
+Function average (line 22)
+  Takes: nothing
+  Gives back: a fractional number
+  Steps:
+    1. If filled is equal to 0:
+         1. Stops and gives back 0.0.
+    2. Creates sum (fractional number), starting at 0.0.
+    3. Repeats filled times, with i counting from 0:
+         1. Adds (item i of readings) to sum.
+    4. Stops and gives back sum divided by filled.
+
+Function control (line 33)
+  Takes: nothing
+  Gives back: nothing
+  Steps:
+    1. Creates avg (fractional number), starting at the result of calling average.
+    2. If avg is less than TARGET_C (22.0) minus 0.5 and (not heater_on):
+         1. Sets heater_on to true (1).
+         2. Prints "heater ON at [avg, to 1 decimal place] C" and starts a new line.
+       Otherwise, if avg is greater than TARGET_C (22.0) plus 0.5 and heater_on:
+         1. Sets heater_on to false (0).
+         2. Prints "heater OFF at [avg, to 1 decimal place] C" and starts a new line.
+
+Function state_of (line 44)
+  Takes: nothing
+  Gives back: a HeatState choice
+  Steps:
+    1. Stops and gives back HEAT_ON if heater_on, otherwise HEAT_OFF.
+
+Function clamp_all (line 48)
+  Takes: values (pointer to fractional number), n (whole number), lo (fractional number), hi (fractional number)
+  Gives back: nothing
+  Steps:
+    1. Repeats n times, with i counting from 0:
+         1. If (item i of values) is less than lo:
+              1. Puts lo into item i of values.
+            Otherwise, if (item i of values) is greater than hi:
+              1. Puts hi into item i of values.
+
+Covered: 28 of 28 statements.

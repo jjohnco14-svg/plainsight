@@ -1,0 +1,7 @@
+Function wipe (line 2)
+  Takes: buf (changeable text), n (count)
+  Gives back: nothing
+  Steps:
+    1. Fills the first n bytes of buf with the byte value 0.
+
+Covered: 1 of 1 statements.

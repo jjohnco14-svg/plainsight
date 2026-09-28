@@ -1,0 +1,16 @@
+Function sum_even (line 1)
+  Takes: n (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates total (whole number), starting at 0.
+    2. Loop:
+       Before starting:
+         1. Creates i (whole number), starting at 0.
+       Keeps going while i is less than n.
+       After each round:
+         1. Adds 2 to i.
+       Each round:
+         1. Adds i to total.
+    3. Stops and gives back total.
+
+Covered: 4 of 4 statements.

@@ -1,0 +1,12 @@
+Function report (line 2)
+  Takes: n (whole number), avg (fractional number), name (text), grade (character), mask (non-negative whole number)
+  Gives back: nothing
+  Steps:
+    1. Prints "[n] items" and starts a new line.
+    2. Prints "average [avg, to 2 decimal places]" and starts a new line.
+    3. Prints "name: [name], grade [grade as a character]" and starts a new line.
+    4. Prints "mask [mask in hexadecimal]".
+    5. Prints "[[n, formatted as %5d]] 100%" and starts a new line.
+    6. Prints "raw [avg, to 6 decimal places]" and starts a new line.
+
+Covered: 6 of 6 statements.

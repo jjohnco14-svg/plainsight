@@ -1,0 +1,9 @@
+Function chain (line 1)
+  Takes: a (whole number), b (whole number), c (whole number)
+  Gives back: a whole number
+  Steps:
+    1. Creates left (whole number), starting at a minus b minus c.
+    2. Creates right (whole number), starting at a minus (b minus c).
+    3. Stops and gives back left plus right.
+
+Covered: 3 of 3 statements.
